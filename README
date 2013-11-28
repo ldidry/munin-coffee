@@ -1,0 +1,53 @@
+NAME
+      coffee - Plugin to monitor your coffee pot level
+
+AUTHOR AND COPYRIGHT
+      Copyright 2013 Luc Didry <luc AT didry.org>
+
+HOWTO CONFIGURE AND USE :
+    - /etc/munin/plugins/coffee
+             cp coffee /etc/munin/plugins/
+
+    - /etc/munin/plugin-conf.d/coffee
+             [coffee]
+             env.start_pixel_x 1    # x coordinate of the top pixel of the ruler (default 1)
+             env.start_pixel_y 1    # y coordinate of the top pixel of the ruler (default 1)
+             env.r_min 0            # RGB colors min and max values.
+             env.r_max 0.2          # If a pixel got its RGB values inside the min and max, it's a win !
+             env.g_min 0
+             env.g_max 0.2
+             env.b_min 0
+             env.b_max 0.2
+             env.height 100         # length of the ruler (start from the top pixel and goes to bottom) (default 100)
+             env.device /dev/video0 # video device (i.e. the webcam) used to take picture (default /dev/video0)
+             env.warning 20         # get prepared to make more coffee
+             env.critical 5         # Oh my god ! How can we work now ? We need to make coffee !
+
+    - restart Munin node
+             /etc/init.d/munin-node restart
+
+DEPENDANCIES
+    You will need :
+        * ffmpeg
+        * imagemagick
+        * zbar
+        * Image::Magick perl module
+WARNING !
+        You also need to put a QRcode on your coffeepot to check its presence.
+        You will find the QRcode in the git repo
+        https://github.com/ldidry/munin-coffee
+
+LICENSE
+        This program is free software: you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation, either version 3 of the License, or
+        any later version.
+
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
+
+        You should have received a copy of the GNU General Public License
+        along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
