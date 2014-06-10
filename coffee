@@ -73,7 +73,6 @@ use warnings;
 use strict;
 use Munin::Plugin;
 use Image::Magick;
-use Data::Dumper;
 
 my $PLUGIN_NAME = "coffee";
 my $PICTURE = "$Munin::Plugin::pluginstatedir/picture.jpg";
@@ -96,8 +95,7 @@ if( (defined $ARGV[0]) && ($ARGV[0] eq "config") ) {
     print "graph_info This graph shows how much coffee there is in the coffee pot\n";
     print "graph_args -u 100 -l 0\n";
     print "coffee.label coffee level\n";
-    print "coffee.warning $ENV{warning}\n" if defined $ENV{warning};
-    print "coffee.critical $ENV{critical}\n" if defined $ENV{critical};
+    print_thresholds('coffee');
     print "coffee.draw AREA\n";
     ## Done !
     _munin_exit_done();
