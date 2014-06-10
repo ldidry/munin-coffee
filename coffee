@@ -74,7 +74,6 @@ use strict;
 use Munin::Plugin;
 use Image::Magick;
 
-my $PLUGIN_NAME = "coffee";
 my $PICTURE = "$Munin::Plugin::pluginstatedir/picture.jpg";
 my $START_X = $ENV{start_pixel_x};
 my $START_Y = $ENV{start_pixel_y};
